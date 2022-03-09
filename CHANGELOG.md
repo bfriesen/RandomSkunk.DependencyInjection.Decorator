@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning].
 
 ## [Unreleased]
 
+### Fixed
+
+- Make release builds deterministic (needed for source link).
+
 ## [1.0.0]
 
 ### Added
