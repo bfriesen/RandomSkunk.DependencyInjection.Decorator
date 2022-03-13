@@ -9,7 +9,8 @@ and this project adheres to [Semantic Versioning].
 
 ### Fixed
 
-- Make release builds deterministic (needed for source link).
+- Fix source link for release builds. #2
+- Fix missing intellisense in nuget package. #1
 
 ## [1.0.0]
 
