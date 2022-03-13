@@ -12,6 +12,15 @@ services.AddLogging((ILoggingBuilder builder) =>
 services.AddDecoratedSingleton<IExampleService, ExampleService>()
     .AddDecorator<IExampleService, LoggingExampleService>();
 
+/* ...or... */
+
+//services.AddDecoratedTransient<IExampleService>(() => new ExampleService())
+//    .AddDecorator((service, serviceProvider) =>
+//    {
+//        var logger = serviceProvider.GetRequiredService<ILogger<LoggingExampleService>>();
+//        return new LoggingExampleService(service, logger);
+//    });
+
 using var serviceProvider = services.BuildServiceProvider();
 
 var exampleService = serviceProvider.GetRequiredService<IExampleService>();

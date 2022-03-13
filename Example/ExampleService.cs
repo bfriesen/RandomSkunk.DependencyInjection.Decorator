@@ -4,7 +4,7 @@
     {
         public string GetSomething(int someValue)
         {
-            return $"Result from ExampleService.GetSomething({someValue})";
+            return $"Result from ExampleService.GetSomething('{someValue}')";
         }
     }
 }

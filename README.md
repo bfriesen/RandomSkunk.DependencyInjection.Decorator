@@ -1,14 +1,30 @@
 # RandomSkunk.DependencyInjection.Decorator
 
-A simple implementation of the decorator pattern for `Microsoft.Extensions.DependencyInjection`.
+A simple implementation of the decorator pattern for [Microsoft.Extensions.DependencyInjection].
 
 ## Usage
 
-To register a decorated service, call one of the `AddDecorated` extension methods. These methods
-return a `IDecoratingBuilder<T>` object. Then add one or more decorators to the service by calling
-`AddDecorator` on the builder.
+To register a decorated service, add the service to the service collection by calling one of the
+`AddDecorated`, `AddDecoratedTransient`, `AddDecoratedScoped`, or `AddDecoratedSingleton` extension
+methods. Each of these methods returns a `IDecoratingBuilder<T>` object with an `AddDecorator`
+method for adding decorators to the service. Multiple decorators can be added to the service by
+calling `AddDecorator` on the builder multiple times.
 
-For example, assume that you have the following interface, primary implementation, and decorator
+```c#
+services.AddDecoratedSingleton<IExampleService, ExampleService>()
+    .AddDecorator<IExampleService, LoggingExampleService>();
+```
+
+```c#
+services.AddDecoratedTransient<IExampleService>(() => new ExampleService())
+    .AddDecorator((service, serviceProvider) =>
+    {
+        var logger = serviceProvider.GetRequiredService<ILogger<LoggingExampleService>>();
+        return new LoggingExampleService(service, logger);
+    });
+```
+
+These examples assume the following interface, primary implementation, and decorator
 implementation:
 
 ```c#
@@ -21,7 +37,7 @@ public class ExampleService : IExampleService
 {
     public string GetSomething(int someValue)
     {
-        return $"Result from ExampleService.GetSomething({someValue})";
+        return $"Result from ExampleService.GetSomething('{someValue}')";
     }
 }
 
@@ -41,18 +57,11 @@ public class LoggingExampleService : IExampleService
     {
         var something = _exampleService.GetSomething(someValue);
         _logger.LogInformation(
-            "Called IExampleService.GetSomething({SomeValue}), returning '{Something}'.",
+            "Called IExampleService.GetSomething('{SomeValue}'), returning '{Something}'.",
             someValue, something);
         return something;
     }
 }
 ```
 
-Registering `IExampleService` as the service type and `ExampleService` as the primary
-implementation type and `LoggingExampleService` as the decorator implementation type around it
-becomes simply:
-
-```c#
-services.AddDecoratedSingleton<IExampleService, ExampleService>()
-    .AddDecorator<IExampleService, LoggingExampleService>();
-```
+[Microsoft.Extensions.DependencyInjection]: https://www.nuget.org/packages/Microsoft.Extensions.DependencyInjection

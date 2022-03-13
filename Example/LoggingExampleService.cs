@@ -16,7 +16,7 @@ namespace Example
         public string GetSomething(int someValue)
         {
             var something = _exampleService.GetSomething(someValue);
-            _logger.LogInformation("Called IExampleService.GetSomething({SomeValue}), returning '{Something}'.", someValue, something);
+            _logger.LogInformation("Called IExampleService.GetSomething('{SomeValue}'), returning '{Something}'.", someValue, something);
             return something;
         }
     }
