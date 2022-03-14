@@ -7,10 +7,12 @@ and this project adheres to [Semantic Versioning].
 
 ## [Unreleased]
 
+## [1.0.1]
+
 ### Fixed
 
-- Fix source link for release builds. #2
-- Fix missing intellisense in nuget package. #1
+- Fix missing intellisense in nuget package (#1).
+- Fix source link in nuget package (#2).
 
 ## [1.0.0]
 
@@ -24,4 +26,5 @@ and this project adheres to [Semantic Versioning].
 [Keep a Changelog]: https://keepachangelog.com/en/1.0.0/
 [Semantic Versioning]: https://semver.org/spec/v2.0.0.html
 [1.0.0]: https://github.com/bfriesen/RandomSkunk.DependencyInjection.Decorator/compare/0909129881ba3a306353a11bd548538bf3122723...v1.0.0
-[Unreleased]: https://github.com/bfriesen/RandomSkunk.DependencyInjection.Decorator/compare/v1.0.0...HEAD
+[1.0.1]: https://github.com/bfriesen/RandomSkunk.DependencyInjection.Decorator/compare/v1.0.0...v1.0.1
+[Unreleased]: https://github.com/bfriesen/RandomSkunk.DependencyInjection.Decorator/compare/v1.0.1...HEAD
