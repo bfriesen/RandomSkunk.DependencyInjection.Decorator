@@ -6,7 +6,7 @@ using Xunit;
 
 namespace UnitTests
 {
-    public partial class DecoratingBuilderTests
+    public class DecoratingBuilderTests
     {
         [Fact(DisplayName = "Constructor sets ServiceFactory property from parameter")]
         public void ConstructorHappyPath()

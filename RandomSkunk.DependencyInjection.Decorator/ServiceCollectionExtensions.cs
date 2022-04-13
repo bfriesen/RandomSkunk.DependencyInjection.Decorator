@@ -22,8 +22,10 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <returns>
         /// A <see cref="IDecoratingBuilder{T}"/> used to decorate the service.
         /// </returns>
-        public static IDecoratingBuilder<TService> AddDecorated<TService>(this IServiceCollection services,
-            Func<IServiceProvider, TService> serviceFactory, ServiceLifetime lifetime)
+        public static IDecoratingBuilder<TService> AddDecorated<TService>(
+            this IServiceCollection services,
+            Func<IServiceProvider, TService> serviceFactory,
+            ServiceLifetime lifetime)
             where TService : class
         {
             if (services is null)
@@ -53,8 +55,10 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <returns>
         /// A <see cref="IDecoratingBuilder{T}"/> used to decorate the service.
         /// </returns>
-        public static IDecoratingBuilder<TService> AddDecorated<TService>(this IServiceCollection services,
-            Func<TService> serviceFactory, ServiceLifetime lifetime)
+        public static IDecoratingBuilder<TService> AddDecorated<TService>(
+            this IServiceCollection services,
+            Func<TService> serviceFactory,
+            ServiceLifetime lifetime)
             where TService : class
         {
             if (serviceFactory is null)
@@ -65,7 +69,7 @@ namespace Microsoft.Extensions.DependencyInjection
 
         /// <summary>
         /// Adds a service with a lifetime specified in <paramref name="lifetime"/> of the type
-        /// specified in <typeparamref name="TService"/> with an implementation type specified in 
+        /// specified in <typeparamref name="TService"/> with an implementation type specified in
         /// <typeparamref name="TImplementation"/> to the specified
         /// <see cref="IServiceCollection"/>.
         /// </summary>
@@ -78,12 +82,14 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <returns>
         /// A <see cref="IDecoratingBuilder{T}"/> used to decorate the service.
         /// </returns>
-        public static IDecoratingBuilder<TService> AddDecorated<TService, TImplementation>(this IServiceCollection services,
+        public static IDecoratingBuilder<TService> AddDecorated<TService, TImplementation>(
+            this IServiceCollection services,
             ServiceLifetime lifetime)
             where TService : class
             where TImplementation : TService =>
-            services.AddDecorated<TService>(serviceProvider =>
-                ActivatorUtilities.CreateInstance<TImplementation>(serviceProvider), lifetime);
+            services.AddDecorated<TService>(
+                serviceProvider => ActivatorUtilities.CreateInstance<TImplementation>(serviceProvider),
+                lifetime);
 
         /// <summary>
         /// Adds a transient service of the type specified in <typeparamref name="TService"/> with
@@ -98,7 +104,8 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <returns>
         /// A <see cref="IDecoratingBuilder{T}"/> used to decorate the service.
         /// </returns>
-        public static IDecoratingBuilder<TService> AddDecoratedTransient<TService>(this IServiceCollection services,
+        public static IDecoratingBuilder<TService> AddDecoratedTransient<TService>(
+            this IServiceCollection services,
             Func<IServiceProvider, TService> serviceFactory)
             where TService : class =>
             services.AddDecorated(serviceFactory, ServiceLifetime.Transient);
@@ -116,7 +123,8 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <returns>
         /// A <see cref="IDecoratingBuilder{T}"/> used to decorate the service.
         /// </returns>
-        public static IDecoratingBuilder<TService> AddDecoratedTransient<TService>(this IServiceCollection services,
+        public static IDecoratingBuilder<TService> AddDecoratedTransient<TService>(
+            this IServiceCollection services,
             Func<TService> serviceFactory)
             where TService : class =>
             services.AddDecorated(serviceFactory, ServiceLifetime.Transient);
@@ -152,7 +160,8 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <returns>
         /// A <see cref="IDecoratingBuilder{T}"/> used to decorate the service.
         /// </returns>
-        public static IDecoratingBuilder<TService> AddDecoratedScoped<TService>(this IServiceCollection services,
+        public static IDecoratingBuilder<TService> AddDecoratedScoped<TService>(
+            this IServiceCollection services,
             Func<IServiceProvider, TService> serviceFactory)
             where TService : class =>
             services.AddDecorated(serviceFactory, ServiceLifetime.Scoped);
@@ -170,7 +179,8 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <returns>
         /// A <see cref="IDecoratingBuilder{T}"/> used to decorate the service.
         /// </returns>
-        public static IDecoratingBuilder<TService> AddDecoratedScoped<TService>(this IServiceCollection services,
+        public static IDecoratingBuilder<TService> AddDecoratedScoped<TService>(
+            this IServiceCollection services,
             Func<TService> serviceFactory)
             where TService : class =>
             services.AddDecorated(serviceFactory, ServiceLifetime.Scoped);
@@ -188,7 +198,8 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <returns>
         /// A <see cref="IDecoratingBuilder{T}"/> used to decorate the service.
         /// </returns>
-        public static IDecoratingBuilder<TService> AddDecoratedScoped<TService, TImplementation>(this IServiceCollection services)
+        public static IDecoratingBuilder<TService> AddDecoratedScoped<TService, TImplementation>(
+            this IServiceCollection services)
             where TService : class
             where TImplementation : TService =>
             services.AddDecorated<TService, TImplementation>(ServiceLifetime.Scoped);
@@ -206,7 +217,8 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <returns>
         /// A <see cref="IDecoratingBuilder{T}"/> used to decorate the service.
         /// </returns>
-        public static IDecoratingBuilder<TService> AddDecoratedSingleton<TService>(this IServiceCollection services,
+        public static IDecoratingBuilder<TService> AddDecoratedSingleton<TService>(
+            this IServiceCollection services,
             Func<IServiceProvider, TService> serviceFactory)
             where TService : class =>
             services.AddDecorated(serviceFactory, ServiceLifetime.Singleton);
@@ -224,7 +236,8 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <returns>
         /// A <see cref="IDecoratingBuilder{T}"/> used to decorate the service.
         /// </returns>
-        public static IDecoratingBuilder<TService> AddDecoratedSingleton<TService>(this IServiceCollection services,
+        public static IDecoratingBuilder<TService> AddDecoratedSingleton<TService>(
+            this IServiceCollection services,
             Func<TService> serviceFactory)
             where TService : class =>
             services.AddDecorated(serviceFactory, ServiceLifetime.Singleton);
@@ -242,7 +255,8 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <returns>
         /// A <see cref="IDecoratingBuilder{T}"/> used to decorate the service.
         /// </returns>
-        public static IDecoratingBuilder<TService> AddDecoratedSingleton<TService, TImplementation>(this IServiceCollection services)
+        public static IDecoratingBuilder<TService> AddDecoratedSingleton<TService, TImplementation>(
+            this IServiceCollection services)
             where TService : class
             where TImplementation : TService =>
             services.AddDecorated<TService, TImplementation>(ServiceLifetime.Singleton);
@@ -260,7 +274,8 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <returns>
         /// A <see cref="IDecoratingBuilder{T}"/> used to decorate the service.
         /// </returns>
-        public static IDecoratingBuilder<TService> AddDecoratedSingleton<TService>(this IServiceCollection services,
+        public static IDecoratingBuilder<TService> AddDecoratedSingleton<TService>(
+            this IServiceCollection services,
             TService implementationInstance)
             where TService : class
         {

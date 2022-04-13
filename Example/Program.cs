@@ -14,12 +14,14 @@ services.AddDecoratedSingleton<IExampleService, ExampleService>()
 
 /* ...or... */
 
-//services.AddDecoratedTransient<IExampleService>(() => new ExampleService())
-//    .AddDecorator((service, serviceProvider) =>
-//    {
-//        var logger = serviceProvider.GetRequiredService<ILogger<LoggingExampleService>>();
-//        return new LoggingExampleService(service, logger);
-//    });
+/*
+services.AddDecoratedTransient<IExampleService>(() => new ExampleService())
+    .AddDecorator((service, serviceProvider) =>
+    {
+        var logger = serviceProvider.GetRequiredService<ILogger<LoggingExampleService>>();
+        return new LoggingExampleService(service, logger);
+    });
+*/
 
 using var serviceProvider = services.BuildServiceProvider();
 

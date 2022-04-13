@@ -5,7 +5,7 @@ namespace Microsoft.Extensions.DependencyInjection
     /// <summary>
     /// An object that adds decorators to a registered service.
     /// </summary>
-    /// <typeparam name="TService"></typeparam>
+    /// <typeparam name="TService">The type of service to decorate.</typeparam>
     public class DecoratingBuilder<TService> : IDecoratingBuilder<TService>
         where TService : class
     {

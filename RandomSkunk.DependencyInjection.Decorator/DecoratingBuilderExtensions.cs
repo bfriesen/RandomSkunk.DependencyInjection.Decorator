@@ -24,12 +24,14 @@ namespace Microsoft.Extensions.DependencyInjection
         /// A reference to the <paramref name="builder"/> parameter after the operation has
         /// completed.
         /// </returns>
-        public static IDecoratingBuilder<TService> AddDecorator<TService>(this IDecoratingBuilder<TService> builder,
+        public static IDecoratingBuilder<TService> AddDecorator<TService>(
+            this IDecoratingBuilder<TService> builder,
             Func<TService, TService> decoratorFactory)
             where TService : class
         {
             if (decoratorFactory is null)
                 throw new ArgumentNullException(nameof(decoratorFactory));
+
             return builder.AddDecorator((serviceToDecorate, _) => decoratorFactory.Invoke(serviceToDecorate));
         }
 

@@ -7,7 +7,7 @@ using Xunit;
 
 namespace UnitTests
 {
-    public class ServiceCollectionExtensions
+    public class ServiceCollectionExtensionsTests
     {
         private static readonly MethodInfo _buildMethod = typeof(DecoratingBuilder<ITestService>).GetMethod(nameof(DecoratingBuilder<ITestService>.Build))!;
 
