@@ -7,14 +7,14 @@ and this project adheres to [Semantic Versioning].
 
 ## [Unreleased]
 
-## [1.0.1]
+## [1.0.1] - 2022-03-22
 
 ### Fixed
 
 - Fix missing intellisense in nuget package ([#1]).
 - Fix source link in nuget package ([#2]).
 
-## [1.0.0]
+## [1.0.0] - 2022-03-09
 
 ### Added
 
