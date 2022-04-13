@@ -9,10 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="6.0.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\RandomSkunk.DependencyInjection.Decorator\RandomSkunk.DependencyInjection.Decorator.csproj" />
+    <PackageReference Include="RandomSkunk.DependencyInjection.Decorator" Version="1.0.1" />
   </ItemGroup>
 
 </Project>
